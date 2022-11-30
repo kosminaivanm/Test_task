@@ -49,7 +49,11 @@ class Fight() {
                 else println("${player.name} нанёс $dmg урона ${monsters[x - 1].name}")
             }
 
-            monsters.size + 1 -> player.heal()
+            monsters.size + 1 -> {
+                if (player.canHeal()) player.heal()
+                else playerTurn()
+            }
+
             else -> {
                 println("Введены неверные параметры, попробуйте ещё раз:")
                 playerTurn()
